@@ -1,0 +1,28 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		
+		{
+			"type": "npm",
+			"script": "build",
+			"path": "Chat/ClientApp",
+			"group": "build",
+			"problemMatcher": [],
+			"label": "npm: build - Chat/ClientApp",
+			"detail": "react-scripts build"
+		},
+		 {
+            "label": "build",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/chat/Chat.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile"
+        }
+
+	]
+}

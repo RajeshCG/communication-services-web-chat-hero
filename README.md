@@ -21,9 +21,6 @@ Additional documentation for this sample can be found on [Microsoft Docs](https:
 
 ![Homepage](./Media/homepage-sample-chat.png)
 
-## ❤️ Feedback
-We appreciate your feedback and energy helping us improve our services. [Please let us know if you are satisfied with ACS through this survey](https://microsoft.qualtrics.com/jfe/form/SV_5dtYL81xwHnUVue). 
-
 ## Prerequisites
 
 - Create an Azure account with an active subscription. For details, see [Create an account for free](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
@@ -51,6 +48,28 @@ We appreciate your feedback and energy helping us improve our services. [Please 
 3. Get the `Connection String` from the Azure portal. For more information on connection strings, see [Create an Azure Communication Resources](https://docs.microsoft.com/en-us/azure/communication-services/quickstarts/create-communication-resource)
 4. Once you get the `Connection String`, Add the connection string to the **Chat/appsettings.json** file found under the Chat folder. Input your connection string in the variable: `ResourceConnectionString`.
 
+5.  Enable interoperability in your Teams tenant  
+ 5.1 Prepare the Microsoft Teams module
+```sh
+      Get-module *teams* 
+      Install-Module -Name MicrosoftTeams
+      Update-Module MicrosoftTeams 
+ ```
+  5.2 Prepare the Microsoft Teams module
+```sh      
+       Connect-MicrosoftTeams 
+```
+  5.3 Prepare the Microsoft Teams module
+  ```sh 
+    $allowlist = @('IMMUTABLE_RESOURCE_ID') # Please replace IMMUTABLE_RESOURCE_ID value for ACS resource
+   
+    Set-CsTeamsAcsFederationConfiguration -EnableAcsUsers $True -AllowedAcsResources $allowlist
+  ```
+  5.4 Enable tenant policy
+
+  ```sh
+  Set-CsExternalAccessPolicy -Identity Global -EnableAcsFederationAccess $true
+   ```
 ## Local run
 
 1. Go to the Chat folder and open the `Chat.csproj` solution in Visual Studio
