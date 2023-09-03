@@ -1,0 +1,34 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Launch Edge",
+            "request": "launch",
+            "type": "msedge",
+            "preLaunchTask": "build",
+            "url": "http://localhost:5000",
+            "webRoot": "${workspaceFolder}/chat/ClientApp"
+        },
+        {
+            "name": ".NET Core Launch (web)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/chat/bin/Debug/net7.0/Chat.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/chat",
+            "stopAtEntry": false,
+            "serverReadyAction": {
+                "action": "openExternally", 
+                // "action": "debugWithEdge", // or "debugWithChrome"
+                "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
+            },
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development",
+                "ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "Microsoft.AspNetCore.SpaProxy"
+            }
+        ]
+    }
